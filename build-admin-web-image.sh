@@ -16,8 +16,7 @@ npm run build
 
 artifactId=mall-admin-web
 version=1.1-SNAPSHOT
-
 # docker
 docker build -t ${artifactId}:${version} -f ./Dockerfile .
 docker tag ${artifactId}:${version} ${group}/${artifactId}:${version}
-docker push ${group}/${artifactId}:${version}
+#docker push ${group}/${artifactId}:${version}
