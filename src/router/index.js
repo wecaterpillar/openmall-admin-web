@@ -355,6 +355,84 @@ export const constantRouterMap = [
         hidden:true
       }
     ]
+  },{
+    path: '/sys',
+    component: Layout,
+    redirect: '/sys/user',
+    name: 'sys',
+    meta: {title: '系统管理', icon: 'home'},
+    children: [
+      {
+        path: 'admin',
+        name: 'admin',
+        component: () => import('@/views/sys/admin/index'),
+        meta: {title: '用户列表', icon: 'product-list'}
+      },
+      {
+        path: 'addAdmin',
+        name: 'addAdmin',
+        component: () => import('@/views/sys/admin/add'),
+        meta: {title: '添加用户'},
+        hidden: true
+      },
+      {
+        path: 'updateAdmin',
+        name: 'updateAdmin',
+        component: () => import('@/views/sys/admin/update'),
+        meta: {title: '编辑用户'},
+        hidden: true
+      },{
+        path: 'role',
+        name: 'role',
+        component: () => import('@/views/sys/role/index'),
+        meta: {title: '角色列表', icon: 'product-list'}
+      },
+      {
+        path: 'addRole',
+        name: 'addRole',
+        component: () => import('@/views/sys/role/add'),
+        meta: {title: '添加角色'},
+        hidden: true
+      },
+      {
+        path: 'updateRole',
+        name: 'updateRole',
+        component: () => import('@/views/sys/role/update'),
+        meta: {title: '编辑角色'},
+        hidden: true
+      }, {
+        path: 'permission',
+        name: 'permission',
+        component: () => import('@/views/sys/permission/index'),
+        meta: {title: '权限列表', icon: 'product-list'}
+      },
+      {
+        path: 'addPermission',
+        name: 'addPermission',
+        component: () => import('@/views/sys/permission/add'),
+        meta: {title: '添加权限'},
+        hidden: true
+      },
+      {
+        path: 'updatePermission',
+        name: 'updatePermission',
+        component: () => import('@/views/sys/permission/update'),
+        meta: {title: '编辑权限'},
+        hidden: true
+      },
+      {
+        path: 'webLog',
+        name: 'webLog',
+        component: () => import('@/views/sys/webLog/index'),
+        meta: {title: '前台日志列表', icon: 'product-list'}
+      },{
+        path: 'adminLog',
+        name: 'adminLog',
+        component: () => import('@/views/sys/adminLog/index'),
+        meta: {title: '后台日志列表', icon: 'product-list'}
+      },
+
+    ]
   },
   {path: '*', redirect: '/404', hidden: true}
 ]
