@@ -50,7 +50,7 @@
   </div>
 </template>
 <script>
-  import {deliveryOrder} from '@/api/order'
+  import {deliveryOrder} from '@/api/oms/order'
   const defaultLogisticsCompanies=["顺丰快递","圆通快递","中通快递","韵达快递"];
   export default {
     name: 'deliverOrderList',

@@ -105,7 +105,7 @@
   </div>
 </template>
 <script>
-  import {fetchList,deleteCoupon} from '@/api/coupon';
+  import {fetchList,deleteCoupon} from '@/api/sms/coupon';
   import {formatDate} from '@/utils/date';
   const defaultListQuery = {
     pageNum: 1,

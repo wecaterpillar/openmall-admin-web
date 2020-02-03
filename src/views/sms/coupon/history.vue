@@ -115,8 +115,8 @@
 </template>
 <script>
   import {formatDate} from '@/utils/date';
-  import {getCoupon} from '@/api/coupon';
-  import {fetchList as fetchCouponHistoryList} from '@/api/couponHistory';
+  import {getCoupon} from '@/api/sms/coupon';
+  import {fetchList as fetchCouponHistoryList} from '@/api/sms/couponHistory';
 
   const defaultTypeOptions = [
     {

@@ -63,9 +63,9 @@
 </template>
 
 <script>
-  import {fetchListWithChildren} from '@/api/productCate'
-  import {fetchList as fetchBrandList} from '@/api/brand'
-  import {getProduct} from '@/api/product';
+  import {fetchListWithChildren} from '@/api/pms/productCate'
+  import {fetchList as fetchBrandList} from '@/api/pms/brand'
+  import {getProduct} from '@/api/pms/product';
 
   export default {
     name: "ProductInfoDetail",

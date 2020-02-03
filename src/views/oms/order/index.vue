@@ -179,7 +179,7 @@
   </div>
 </template>
 <script>
-  import {fetchList,closeOrder,deleteOrder} from '@/api/order'
+  import {fetchList,closeOrder,deleteOrder} from '@/api/oms/order'
   import {formatDate} from '@/utils/date';
   import LogisticsDialog from '@/views/oms/order/components/logisticsDialog';
   const defaultListQuery = {

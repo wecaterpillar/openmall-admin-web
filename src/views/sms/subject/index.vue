@@ -170,8 +170,8 @@
   </div>
 </template>
 <script>
-  import {fetchList,updateRecommendStatus,deleteHomeSubject,createHomeSubject,updateHomeSubjectSort} from '@/api/homeSubject';
-  import {fetchList as fetchSubjectList} from '@/api/subject';
+  import {fetchList,updateRecommendStatus,deleteHomeSubject,createHomeSubject,updateHomeSubjectSort} from '@/api/sms/homeSubject';
+  import {fetchList as fetchSubjectList} from '@/api/cms/subject';
   import {formatDate} from '@/utils/date';
 
   const defaultListQuery = {

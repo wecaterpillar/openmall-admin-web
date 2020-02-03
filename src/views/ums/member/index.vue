@@ -6,7 +6,7 @@
           <span>筛选搜索</span>
           <el-button
             style="float: right"
-            @click="searchBrandList()"
+            @click="searchMemberList()"
             type="primary"
             size="small">
             查询结果
@@ -15,7 +15,7 @@
         <div style="margin-top: 15px">
           <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
             <el-form-item label="输入搜索：">
-              <el-input style="width: 203px" v-model="listQuery.keyword" placeholder="品牌名称/关键字"></el-input>
+              <el-input style="width: 203px" v-model="listQuery.keyword" placeholder="会员名称/关键字"></el-input>
             </el-form-item>
           </el-form>
         </div>
@@ -23,12 +23,7 @@
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
       <span>数据列表</span>
-      <el-button
-        class="btn-add"
-        @click="addBrand()"
-        size="mini">
-        添加
-      </el-button>
+
     </el-card>
     <div class="table-container">
       <el-table ref="brandTable"
@@ -37,61 +32,47 @@
                 @selection-change="handleSelectionChange"
                 v-loading="listLoading"
                 border>
+
         <el-table-column type="selection" width="60" align="center"></el-table-column>
-        <el-table-column label="编号" width="100" align="center">
+        <el-table-column label="编号" width="180" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="品牌名称" align="center">
-          <template slot-scope="scope">{{scope.row.name}}</template>
+        <el-table-column label="注册时间" width="180" align="center">
+          <template slot-scope="scope">{{scope.row.createTime | formatTime}}</template>
         </el-table-column>
-        <el-table-column label="品牌首字母" width="100" align="center">
-          <template slot-scope="scope">{{scope.row.firstLetter}}</template>
+        <el-table-column label="用户昵称" align="center">
+          <template slot-scope="scope">{{scope.row.nickname}}</template>
         </el-table-column>
-        <el-table-column label="排序" width="100" align="center">
-          <template slot-scope="scope">{{scope.row.sort}}</template>
+        <el-table-column label="用户账号" width="180" align="center">
+          <template slot-scope="scope">{{scope.row.username}}</template>
         </el-table-column>
-        <el-table-column label="品牌制造商" width="100" align="center">
+        <el-table-column label="电话号码" width="180" align="center">
+          <template slot-scope="scope">{{scope.row.phone}}</template>
+        </el-table-column>
+        <el-table-column label="用户余额" width="180" align="center">
           <template slot-scope="scope">
-            <el-switch
-              @change="handleFactoryStatusChange(scope.$index, scope.row)"
-              :active-value="1"
-              :inactive-value="0"
-              v-model="scope.row.factoryStatus">
-            </el-switch>
+            <p> {{scope.row.blance}}</p>
+            <p>
+              <el-button
+                type="text"
+                @click="handleShowVeriyEditDialog(scope.$index, scope.row)">余额记录
+              </el-button>
+            </p>
           </template>
         </el-table-column>
         <el-table-column label="是否显示" width="100" align="center">
           <template slot-scope="scope">
             <el-switch
-              @change="handleShowStatusChange(scope.$index, scope.row)"
+              @change="handleShowChange(scope.$index, scope.row)"
               :active-value="1"
               :inactive-value="0"
-              v-model="scope.row.showStatus">
+              v-model="scope.row.status">
             </el-switch>
           </template>
         </el-table-column>
-        <el-table-column label="相关" width="220" align="center">
-          <template slot-scope="scope">
-            <span>商品：</span>
-            <el-button
-              size="mini"
-              type="text"
-              @click="getProductList(scope.$index, scope.row)">100
-            </el-button>
-            <span>评价：</span>
-            <el-button
-              size="mini"
-              type="text"
-              @click="getProductCommentList(scope.$index, scope.row)">1000
-            </el-button>
-          </template>
-        </el-table-column>
+
         <el-table-column label="操作" width="200" align="center">
           <template slot-scope="scope">
-            <el-button
-              size="mini"
-              @click="handleUpdate(scope.$index, scope.row)">编辑
-            </el-button>
             <el-button
               size="mini"
               type="danger"
@@ -102,24 +83,7 @@
       </el-table>
     </div>
     <div class="batch-operate-container">
-      <el-select
-        size="small"
-        v-model="operateType" placeholder="批量操作">
-        <el-option
-          v-for="item in operates"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value">
-        </el-option>
-      </el-select>
-      <el-button
-        style="margin-left: 20px"
-        class="search-button"
-        @click="handleBatchOperate()"
-        type="primary"
-        size="small">
-        确定
-      </el-button>
+
     </div>
     <div class="pagination-container">
       <el-pagination
@@ -133,23 +97,55 @@
         :total="total">
       </el-pagination>
     </div>
+    <el-dialog
+      title="余额记录"
+      :visible.sync="dialogVisible"
+      width="40%">
+      <el-table style="width: 100%;margin-top: 20px"
+                :data="blanceList"
+                border>
+
+        <el-table-column label="用户红包编号" align="center">
+          <template slot-scope="scope">{{scope.row.id}}</template>
+        </el-table-column>
+
+        <el-table-column label="发红包用户的编号" align="center">
+          <template slot-scope="scope">{{scope.row.adminId}}</template>
+        </el-table-column>
+        <el-table-column label="抢红包用户的编号" align="center">
+          <template slot-scope="scope">{{scope.row.userId}}</template>
+        </el-table-column>
+        <el-table-column label="抢到的红包金额" align="center">
+          <template slot-scope="scope">{{scope.row.amount}}</template>
+        </el-table-column>
+        <el-table-column label="抢红包时间" align="center">
+          <template slot-scope="scope">{{scope.row.grabTime|formatTime}}</template>
+        </el-table-column>
+        <el-table-column label="备注" align="center">
+          <template slot-scope="scope">{{scope.row.note}}</template>
+        </el-table-column>
+      </el-table>
+    </el-dialog>
   </div>
 </template>
 <script>
-  import {fetchList, updateShowStatus, updateFactoryStatus, deleteBrand} from '@/api/pms/brand'
+  import {formatDate} from '@/utils/date';
+  import {fetchList, updateShowStatus, updateFactoryStatus, deleteMember,fetchBlanceList} from '@/api/ums/member'
 
   export default {
-    name: 'brandList',
+    name: 'memberList',
     data() {
       return {
+        dialogVisible:false,
+        blanceList:null,
         operates: [
           {
-            label: "显示品牌",
-            value: "showBrand"
+            label: "显示",
+            value: "showMember"
           },
           {
-            label: "隐藏品牌",
-            value: "hideBrand"
+            label: "隐藏",
+            value: "hideMember"
           }
         ],
         operateType: null,
@@ -167,30 +163,75 @@
     created() {
       this.getList();
     },
+    filters:{
+      formatTime(time) {
+        if(time==null||time===''){
+          return 'N/A';
+        }
+        let date = new Date(time);
+        return formatDate(date, 'yyyy-MM-dd hh:mm:ss')
+      },
+      verifyStatusFilter(value) {
+        if (value === 1) {
+          return '消费';
+        } else {
+          return '收入';
+        }
+      },
+      formatStatus(status){
+        for(let i=0;i<defaultStatusOptions.length;i++){
+          if(status===defaultStatusOptions[i].value){
+            return defaultStatusOptions[i].label;
+          }
+        }
+      },
+      formatReturnAmount(row){
+        return row.productRealPrice*row.productCount;
+      }
+    },
     methods: {
+      handleShowVeriyEditDialog(index,row){
+        this.dialogVisible=true;
+        fetchBlanceList(row.id).then(response=>{
+          this.blanceList=response.data;
+       });
+      },
+
+      handleShowChange(index, row) {
+        let params = new URLSearchParams();
+        params.append('ids', row.id);
+        params.append('showStatus', row.showStatus);
+        updateShowStatus(params).then(response => {
+          this.$message({
+          message: '修改成功',
+          type: 'success',
+          duration: 1000
+        });
+      });
+      },
       getList() {
         this.listLoading = true;
         fetchList(this.listQuery).then(response => {
           this.listLoading = false;
-          this.list = response.data.list;
+          this.list = response.data.records;
           this.total = response.data.total;
-          this.totalPage = response.data.totalPage;
-          this.pageSize = response.data.pageSize;
+          this.totalPage = response.data.pages;
+          this.pageSize = response.data.size;
         });
       },
       handleSelectionChange(val) {
         this.multipleSelection = val;
       },
       handleUpdate(index, row) {
-        this.$router.push({path: '/pms/updateBrand', query: {id: row.id}})
+        this.$router.push({path: '/ums/updateMember', query: {id: row.id}})
       },
       handleDelete(index, row) {
-        this.$confirm('是否要删除该品牌', '提示', {
+        this.$confirm('是否要删除该记录', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
         }).then(() => {
-          deleteBrand(row.id).then(response => {
+          deleteMember(row.id).then(response => {
             this.$message({
               message: '删除成功',
               type: 'success',
@@ -252,7 +293,7 @@
         this.listQuery.pageNum = val;
         this.getList();
       },
-      searchBrandList() {
+      searchMemberList() {
         this.listQuery.pageNum = 1;
         this.getList();
       },
@@ -267,9 +308,9 @@
           return;
         }
         let showStatus = 0;
-        if (this.operateType === 'showBrand') {
+        if (this.operateType === 'showMember') {
           showStatus = 1;
-        } else if (this.operateType === 'hideBrand') {
+        } else if (this.operateType === 'hideMember') {
           showStatus = 0;
         } else {
           this.$message({
@@ -295,8 +336,8 @@
           });
         });
       },
-      addBrand() {
-        this.$router.push({path: '/pms/addBrand'})
+      addMember() {
+        this.$router.push({path: '/pms/addMember'})
       }
     }
   }

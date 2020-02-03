@@ -43,7 +43,7 @@
   </el-card>
 </template>
 <script>
-  import {getOrderSetting,updateOrderSetting} from '@/api/orderSetting';
+  import {getOrderSetting,updateOrderSetting} from '@/api/oms/orderSetting';
   const defaultOrderSetting = {
     id: null,
     flashOrderOvertime: 0,

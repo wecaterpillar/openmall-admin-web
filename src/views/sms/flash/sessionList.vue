@@ -83,7 +83,7 @@
   </div>
 </template>
 <script>
-  import {fetchList,updateStatus,deleteSession,createSession,updateSession} from '@/api/flashSession';
+  import {fetchList,updateStatus,deleteSession,createSession,updateSession} from '@/api/sms/flashSession';
   import {formatDate} from '@/utils/date';
   const defaultFlashSession={
     name:null,

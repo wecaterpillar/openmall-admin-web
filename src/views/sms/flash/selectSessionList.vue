@@ -37,7 +37,7 @@
   </div>
 </template>
 <script>
-  import {fetchSelectList} from '@/api/flashSession';
+  import {fetchSelectList} from '@/api/sms/flashSession';
   import {formatDate} from '@/utils/date';
   export default {
     name: 'selectSessionList',

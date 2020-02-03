@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import {policy} from '@/api/oss'
+  import {policy} from '@/api/cms/oss'
 
   export default {
     name: 'editorSlideUpload',

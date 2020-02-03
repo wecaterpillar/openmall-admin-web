@@ -67,8 +67,8 @@
 </template>
 
 <script>
-  import {fetchList} from '@/api/productAttrCate'
-  import {createProductAttr,getProductAttr,updateProductAttr} from '@/api/productAttr'
+  import {fetchList} from '@/api/pms/productAttrCate'
+  import {createProductAttr,getProductAttr,updateProductAttr} from '@/api/pms/productAttr'
 
   const defaultProductAttr = {
     filterType: 0,

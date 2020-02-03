@@ -195,6 +195,61 @@ export const constantRouterMap = [
     ]
   },
   {
+    path: '/ums',
+    component: Layout,
+    redirect: '/ums/member',
+    name: 'ums',
+    meta: {title: '会员', icon: 'home'},
+    children: [
+      {
+        path: 'member',
+        name: 'member',
+        component: () => import('@/views/ums/member/index'),
+        meta: {title: '会员列表', icon: 'product-list'}
+      },
+
+      {
+        path: 'addMember',
+        name: 'addMember',
+        component: () => import('@/views/ums/member/add'),
+        meta: {title: '添加会员'},
+        hidden: true
+      },
+      {
+        path: 'updateMember',
+        name: 'updateMember',
+        component: () => import('@/views/ums/member/update'),
+        meta: {title: '编辑会员'},
+        hidden: true
+      }, {
+        path: 'memberLevel',
+        name: 'memberLevel',
+        component: () => import('@/views/ums/memberLevel/index'),
+        meta: {title: '会员等级列表', icon: 'product-list'}
+      },
+
+      {
+        path: 'addMemberLevel',
+        name: 'addMemberLevel',
+        component: () => import('@/views/ums/memberLevel/add'),
+        meta: {title: '添加会员等级'},
+        hidden: true
+      },
+      {
+        path: 'updateMemberLevel',
+        name: 'updateMemberLevel',
+        component: () => import('@/views/ums/memberLevel/update'),
+        meta: {title: '编辑会员等级'},
+        hidden: true
+      }, {
+        path: 'memberBlanceLog',
+        name: 'memberBlanceLog',
+        component: () => import('@/views/ums/memberBlanceLog/index'),
+        meta: {title: '余额日志记录', icon: 'product-list'}
+      }
+    ]
+  },
+  {
     path:'/sms',
     component: Layout,
     redirect: '/sms/coupon',

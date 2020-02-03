@@ -106,7 +106,7 @@
 </template>
 <script>
   import {formatDate} from '@/utils/date';
-  import {fetchList,deleteReason,updateStatus,addReason,getReasonDetail,updateReason} from '@/api/returnReason';
+  import {fetchList,deleteReason,updateStatus,addReason,getReasonDetail,updateReason} from '@/api/oms/returnReason';
   const defaultListQuery = {
     pageNum: 1,
     pageSize: 5

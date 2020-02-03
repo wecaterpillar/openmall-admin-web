@@ -347,7 +347,7 @@
   </div>
 </template>
 <script>
-  import {getOrderDetail,updateReceiverInfo,updateMoneyInfo,closeOrder,updateOrderNote,deleteOrder} from '@/api/order';
+  import {getOrderDetail,updateReceiverInfo,updateMoneyInfo,closeOrder,updateOrderNote,deleteOrder} from '@/api/oms/order';
   import LogisticsDialog from '@/views/oms/order/components/logisticsDialog';
   import {formatDate} from '@/utils/date';
   import VDistpicker from 'v-distpicker';

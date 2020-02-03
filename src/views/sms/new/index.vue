@@ -170,8 +170,8 @@
   </div>
 </template>
 <script>
-  import {fetchList,updateRecommendStatus,deleteNewProduct,createNewProduct,updateNewProductSort} from '@/api/newProduct';
-  import {fetchList as fetchProductList} from '@/api/product';
+  import {fetchList,updateRecommendStatus,deleteNewProduct,createNewProduct,updateNewProductSort} from '@/api/sms/newProduct';
+  import {fetchList as fetchProductList} from '@/api/pms/product';
 
   const defaultListQuery = {
     pageNum: 1,

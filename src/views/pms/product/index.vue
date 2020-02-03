@@ -278,11 +278,11 @@
     updateNewStatus,
     updateRecommendStatus,
     updatePublishStatus
-  } from '@/api/product'
-  import {fetchList as fetchSkuStockList,update as updateSkuStockList} from '@/api/skuStock'
-  import {fetchList as fetchProductAttrList} from '@/api/productAttr'
-  import {fetchList as fetchBrandList} from '@/api/brand'
-  import {fetchListWithChildren} from '@/api/productCate'
+  } from '@/api/pms/product'
+  import {fetchList as fetchSkuStockList,update as updateSkuStockList} from '@/api/pms/skuStock'
+  import {fetchList as fetchProductAttrList} from '@/api/pms/productAttr'
+  import {fetchList as fetchBrandList} from '@/api/pms/brand'
+  import {fetchListWithChildren} from '@/api/pms/productCate'
 
   const defaultListQuery = {
     keyword: null,

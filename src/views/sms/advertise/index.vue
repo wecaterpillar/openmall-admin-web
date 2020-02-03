@@ -139,7 +139,7 @@
   </div>
 </template>
 <script>
-  import {fetchList,updateStatus,deleteHomeAdvertise} from '@/api/homeAdvertise';
+  import {fetchList,updateStatus,deleteHomeAdvertise} from '@/api/sms/homeAdvertise';
   import {formatDate} from '@/utils/date';
   const defaultListQuery = {
     pageNum: 1,

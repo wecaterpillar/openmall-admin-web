@@ -146,8 +146,8 @@
   </div>
 </template>
 <script>
-  import {fetchList,createFlashProductRelation,deleteFlashProductRelation,updateFlashProductRelation} from '@/api/flashProductRelation';
-  import {fetchList as fetchProductList} from '@/api/product';
+  import {fetchList,createFlashProductRelation,deleteFlashProductRelation,updateFlashProductRelation} from '@/api/sms/flashProductRelation';
+  import {fetchList as fetchProductList} from '@/api/pms/product';
   const defaultListQuery = {
     pageNum: 1,
     pageSize: 5,

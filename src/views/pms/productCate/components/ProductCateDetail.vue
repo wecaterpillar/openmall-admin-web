@@ -68,9 +68,9 @@
 </template>
 
 <script>
-  import {fetchList, createProductCate, updateProductCate, getProductCate} from '@/api/productCate';
-  import {fetchListWithAttr} from '@/api/productAttrCate';
-  import {getProductAttrInfo} from '@/api/productAttr';
+  import {fetchList, createProductCate, updateProductCate, getProductCate} from '@/api/pms/productCate';
+  import {fetchListWithAttr} from '@/api/pms/productAttrCate';
+  import {getProductAttrInfo} from '@/api/pms/productAttr';
   import SingleUpload from '@/components/Upload/singleUpload';
 
   const defaultProductCate = {

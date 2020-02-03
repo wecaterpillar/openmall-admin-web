@@ -133,7 +133,7 @@
   </div>
 </template>
 <script>
-  import {fetchList, updateStatus, deleteFlash, createFlash, updateFlash} from '@/api/flash';
+  import {fetchList, updateStatus, deleteFlash, createFlash, updateFlash} from '@/api/sms/flash';
   import {formatDate} from '@/utils/date';
 
   const defaultListQuery = {

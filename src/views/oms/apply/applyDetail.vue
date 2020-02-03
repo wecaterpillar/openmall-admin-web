@@ -195,8 +195,8 @@
   </div>
 </template>
 <script>
-  import {getApplyDetail,updateApplyStatus} from '@/api/returnApply';
-  import {fetchList} from '@/api/companyAddress';
+  import {getApplyDetail,updateApplyStatus} from '@/api/oms/returnApply';
+  import {fetchList} from '@/api/oms/companyAddress';
   import {formatDate} from '@/utils/date';
 
   const defaultUpdateStatusParam = {

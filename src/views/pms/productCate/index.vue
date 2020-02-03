@@ -97,7 +97,7 @@
 </template>
 
 <script>
-  import {fetchList,deleteProductCate,updateShowStatus,updateNavStatus} from '@/api/productCate'
+  import {fetchList,deleteProductCate,updateShowStatus,updateNavStatus} from '@/api/pms/productCate'
 
   export default {
     name: "productCateList",

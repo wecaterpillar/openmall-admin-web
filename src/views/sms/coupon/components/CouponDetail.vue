@@ -140,9 +140,9 @@
   </el-card>
 </template>
 <script>
-  import {createCoupon,getCoupon,updateCoupon} from '@/api/coupon';
-  import {fetchSimpleList as fetchProductList} from '@/api/product';
-  import {fetchListWithChildren} from '@/api/productCate'
+  import {createCoupon,getCoupon,updateCoupon} from '@/api/sms/coupon';
+  import {fetchSimpleList as fetchProductList} from '@/api/pms/product';
+  import {fetchListWithChildren} from '@/api/pms/productCate'
   const defaultCoupon = {
     type: 0,
     name: null,

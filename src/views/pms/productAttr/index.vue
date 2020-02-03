@@ -84,7 +84,7 @@
   </div>
 </template>
 <script>
-  import {fetchList,createProductAttrCate,deleteProductAttrCate,updateProductAttrCate} from '@/api/productAttrCate'
+  import {fetchList,createProductAttrCate,deleteProductAttrCate,updateProductAttrCate} from '@/api/pms/productAttrCate'
 
   export default {
     name: 'productAttrCateList',

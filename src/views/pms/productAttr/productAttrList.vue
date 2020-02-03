@@ -90,7 +90,7 @@
   </div>
 </template>
 <script>
-  import {fetchList, deleteProductAttr} from '@/api/productAttr'
+  import {fetchList, deleteProductAttr} from '@/api/pms/productAttr'
 
   export default {
     name: 'productAttrList',
