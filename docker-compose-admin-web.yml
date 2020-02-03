@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  demo-mall-admin-web:
+    image: szopen/mall-admin-web:1.1-SNAPSHOT
+    container_name: demo-admin-web
+    ports:
+      - 8190:80
+    external_links:
+      - demo-mall-admin:mall-admin
