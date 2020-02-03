@@ -64,3 +64,7 @@ src -- 源码目录
 ## 参考项目
 
 https://github.com/macrozheng/mall-admin-web
+
+##
+
+npm install --save node-sass --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist --sass-binary-site=http://npm.taobao.org/mirrors/node-sass
