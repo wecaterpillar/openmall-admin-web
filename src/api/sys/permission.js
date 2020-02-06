@@ -2,35 +2,35 @@ import request from '@/utils/request'
 
 export function findPermissions(params) {
   return request({
-    url:'/sys/SysPermission/findPermissions',
+    url:'/sys/permission/findPermissions',
     method:'get',
     params:params
   })
 }
 export function treeList(params) {
   return request({
-    url:'/sys/SysPermission/treeList',
+    url:'/sys/permission/treeList',
     method:'get',
     params:params
   })
 }
 export function fetchList(params) {
   return request({
-    url:'/sys/SysPermission/list',
+    url:'/sys/permission/list',
     method:'get',
     params:params
   })
 }
 export function createPermission(data) {
   return request({
-    url:'/sys/SysPermission/create',
+    url:'/sys/permission/create',
     method:'post',
     data:data
   })
 }
 export function updateShowStatus(data) {
   return request({
-    url:'/sys/SysPermission/update/showStatus',
+    url:'/sys/permission/update/showStatus',
     method:'post',
     data:data
   })
@@ -38,7 +38,7 @@ export function updateShowStatus(data) {
 
 export function updateFactoryStatus(data) {
   return request({
-    url:'/sys/SysPermission/update/factoryStatus',
+    url:'/sys/permission/update/factoryStatus',
     method:'post',
     data:data
   })
@@ -46,21 +46,21 @@ export function updateFactoryStatus(data) {
 
 export function deletePermission(id) {
   return request({
-    url:'/sys/SysPermission/delete/'+id,
+    url:'/sys/permission/delete/'+id,
     method:'get',
   })
 }
 
 export function getPermission(id) {
   return request({
-    url:'/sys/SysPermission/'+id,
+    url:'/sys/permission/'+id,
     method:'get',
   })
 }
 
 export function updatePermission(id,data) {
   return request({
-    url:'/sys/SysPermission/update/'+id,
+    url:'/sys/permission/update/'+id,
     method:'post',
     data:data
   })

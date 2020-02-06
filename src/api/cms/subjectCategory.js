@@ -1,14 +1,14 @@
 import request from '@/utils/request'
 export function fetchList(params) {
     return request({
-        url:'/cms/CmsSubjectCategory/list',
+        url:'/cms/subjectCategory/list',
         method:'get',
         params:params
     })
 }
 export function createSubjectCategory(data) {
     return request({
-        url:'/cms/CmsSubjectCategory/create',
+        url:'/cms/subjectCategory/create',
         method:'post',
         data:data
     })
@@ -16,21 +16,21 @@ export function createSubjectCategory(data) {
 
 export function deleteSubjectCategory(id) {
     return request({
-        url:'/cms/CmsSubjectCategory/delete/'+id,
+        url:'/cms/subjectCategory/delete/'+id,
         method:'get',
     })
 }
 
 export function getSubjectCategory(id) {
     return request({
-        url:'/cms/CmsSubjectCategory/'+id,
+        url:'/cms/subjectCategory/'+id,
         method:'get',
     })
 }
 
 export function updateSubjectCategory(id,data) {
     return request({
-        url:'/cms/CmsSubjectCategory/update/'+id,
+        url:'/cms/subjectCategory/update/'+id,
         method:'post',
         data:data
     })

@@ -1,21 +1,21 @@
 import request from '@/utils/request'
 export function fetchList(params) {
   return request({
-    url:'/ums/UmsMember/list',
+    url:'/ums/member/list',
     method:'get',
     params:params
   })
 }
 export function createMember(data) {
   return request({
-    url:'/ums/UmsMember/create',
+    url:'/ums/member/create',
     method:'post',
     data:data
   })
 }
 export function updateShowStatus(data) {
   return request({
-    url:'/ums/UmsMember/update/showStatus',
+    url:'/ums/member/update/showStatus',
     method:'post',
     data:data
   })
@@ -23,7 +23,7 @@ export function updateShowStatus(data) {
 
 export function updateFactoryStatus(data) {
   return request({
-    url:'/ums/UmsMember/update/factoryStatus',
+    url:'/ums/member/update/factoryStatus',
     method:'post',
     data:data
   })
@@ -31,21 +31,21 @@ export function updateFactoryStatus(data) {
 
 export function deleteMember(id) {
   return request({
-    url:'/ums/UmsMember/delete/'+id,
+    url:'/ums/member/delete/'+id,
     method:'get',
   })
 }
 
 export function getMember(id) {
   return request({
-    url:'/ums/UmsMember/'+id,
+    url:'/ums/member/'+id,
     method:'get',
   })
 }
 
 export function updateMember(id,data) {
   return request({
-    url:'/ums/UmsMember/update/'+id,
+    url:'/ums/member/update/'+id,
     method:'post',
     data:data
   })
@@ -53,7 +53,7 @@ export function updateMember(id,data) {
 
 export function fetchBlanceList(id) {
   return request({
-    url:'/ums/UmsMember/fetchBlanceList/'+id,
+    url:'/ums/member/fetchBlanceList/'+id,
     method:'get',
   })
 }

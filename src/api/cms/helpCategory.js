@@ -1,14 +1,14 @@
 import request from '@/utils/request'
 export function fetchList(params) {
     return request({
-        url:'/cms/CmsHelpCategory/list',
+        url:'/cms/helpCategory/list',
         method:'get',
         params:params
     })
 }
 export function createHelpCategory(data) {
     return request({
-        url:'/cms/CmsHelpCategory/create',
+        url:'/cms/helpCategory/create',
         method:'post',
         data:data
     })
@@ -16,21 +16,21 @@ export function createHelpCategory(data) {
 
 export function deleteHelpCategory(id) {
     return request({
-        url:'/cms/CmsHelpCategory/delete/'+id,
+        url:'/cms/helpCategory/delete/'+id,
         method:'get',
     })
 }
 
 export function getHelpCategory(id) {
     return request({
-        url:'/cms/CmsHelpCategory/'+id,
+        url:'/cms/helpCategory/'+id,
         method:'get',
     })
 }
 
 export function updateHelpCategory(id,data) {
     return request({
-        url:'/cms/CmsHelpCategory/update/'+id,
+        url:'/cms/helpCategory/update/'+id,
         method:'post',
         data:data
     })

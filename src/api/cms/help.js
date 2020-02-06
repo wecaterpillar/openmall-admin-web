@@ -1,14 +1,14 @@
 import request from '@/utils/request'
 export function fetchList(params) {
     return request({
-        url:'/cms/CmsHelp/list',
+        url:'/cms/help/list',
         method:'get',
         params:params
     })
 }
 export function createHelp(data) {
     return request({
-        url:'/cms/CmsHelp/create',
+        url:'/cms/help/create',
         method:'post',
         data:data
     })
@@ -16,21 +16,21 @@ export function createHelp(data) {
 
 export function deleteHelp(id) {
     return request({
-        url:'/cms/CmsHelp/delete/'+id,
+        url:'/cms/help/delete/'+id,
         method:'get',
     })
 }
 
 export function getHelp(id) {
     return request({
-        url:'/cms/CmsHelp/'+id,
+        url:'/cms/help/'+id,
         method:'get',
     })
 }
 
 export function updateHelp(id,data) {
     return request({
-        url:'/cms/CmsHelp/update/'+id,
+        url:'/cms/help/update/'+id,
         method:'post',
         data:data
     })
@@ -38,7 +38,7 @@ export function updateHelp(id,data) {
 
 export function updateShowStatus(params) {
   return request({
-    url:'/cms/CmsHelp/update/updateShowStatus',
+    url:'/cms/help/update/updateShowStatus',
     method:'post',
     params:params
   })

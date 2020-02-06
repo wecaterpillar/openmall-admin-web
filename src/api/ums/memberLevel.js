@@ -8,7 +8,7 @@ export function fetchList(params) {
 }
 export function createMemberLevel(data) {
   return request({
-    url:'/ums/UmsMemberLevel/create',
+    url:'/ums/memberLevel/create',
     method:'post',
     data:data
   })
@@ -16,21 +16,21 @@ export function createMemberLevel(data) {
 
 export function deleteMemberLevel(id) {
   return request({
-    url:'/ums/UmsMemberLevel/delete/'+id,
+    url:'/ums/memberLevel/delete/'+id,
     method:'get',
   })
 }
 
 export function getMemberLevel(id) {
   return request({
-    url:'/ums/UmsMemberLevel/'+id,
+    url:'/ums/memberLevel/'+id,
     method:'get',
   })
 }
 
 export function updateMemberLevel(id,data) {
   return request({
-    url:'/ums/UmsMemberLevel/update/'+id,
+    url:'/ums/memberLevel/update/'+id,
     method:'post',
     data:data
   })

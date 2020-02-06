@@ -1,13 +1,13 @@
 import request from '@/utils/request'
 export function fetchList() {
   return request({
-    url:'/prefrenceArea/listAll',
+    url:'/cms/prefrenceArea/listAll',
     method:'get',
   })
 }
 export function createPrefrenceArea(data) {
   return request({
-    url:'/api-cms/cms/CmsPrefrenceArea/create',
+    url:'/cms/prefrenceArea/create',
     method:'post',
     data:data
   })
@@ -15,21 +15,21 @@ export function createPrefrenceArea(data) {
 
 export function deletePrefrenceArea(id) {
   return request({
-    url:'/api-cms/cms/CmsPrefrenceArea/delete/'+id,
+    url:'/cms/prefrenceArea/delete/'+id,
     method:'get',
   })
 }
 
 export function getPrefrenceArea(id) {
   return request({
-    url:'/api-cms/cms/CmsPrefrenceArea/'+id,
+    url:'/cms/prefrenceArea/'+id,
     method:'get',
   })
 }
 
 export function updatePrefrenceArea(id,data) {
   return request({
-    url:'/api-cms/cms/CmsPrefrenceArea/update/'+id,
+    url:'/cms/prefrenceArea/update/'+id,
     method:'post',
     data:data
   })
