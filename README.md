@@ -2,7 +2,7 @@
 
  Admin web for Open Mall
  
-该项目为前后端分离项目的前端部分，后端项目opemmall.
+该项目为前后端分离项目的前端部分，后端项目open mall.
 
 ## 项目介绍
 mall-admin-web是一个电商后台管理系统的前端项目，基于Vue+Element实现。
