@@ -49,6 +49,7 @@
         <el-table-column label="电话号码" width="180" align="center">
           <template slot-scope="scope">{{scope.row.phone}}</template>
         </el-table-column>
+        <!--
         <el-table-column label="用户余额" width="180" align="center">
           <template slot-scope="scope">
             <p> {{scope.row.blance}}</p>
@@ -60,6 +61,7 @@
             </p>
           </template>
         </el-table-column>
+        -->
         <el-table-column label="是否显示" width="100" align="center">
           <template slot-scope="scope">
             <el-switch
@@ -213,7 +215,7 @@
         this.listLoading = true;
         fetchList(this.listQuery).then(response => {
           this.listLoading = false;
-          this.list = response.data.records;
+          this.list = response.data.list;
           this.total = response.data.total;
           this.totalPage = response.data.pages;
           this.pageSize = response.data.size;

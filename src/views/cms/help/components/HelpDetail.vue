@@ -99,7 +99,7 @@
       getCateList() {
         fetchList({pageNum: 1, pageSize: 100}).then(response => {
           this.cateOptions = [];
-        let brandList = response.data.records;
+        let brandList = response.data.list;
         for (let i = 0; i < brandList.length; i++) {
           this.cateOptions.push({label: brandList[i].name, value: brandList[i].id});
         }

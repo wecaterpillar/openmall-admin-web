@@ -99,7 +99,7 @@
       });
       }else{
         fetchList(this.listQuery).then(response => {
-          this.allRoles = response.data.records;
+          this.allRoles = response.data.list;
       });
         this.admin = Object.assign({},defaultAdmin);
       };
