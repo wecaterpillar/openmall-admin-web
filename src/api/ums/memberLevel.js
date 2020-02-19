@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 export function fetchList(params) {
   return request({
-    url:'/ums/memberLevel/listAll',
+    url:'/ums/memberLevel/list',
     method:'get',
     params:params
   })

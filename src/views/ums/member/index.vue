@@ -49,19 +49,7 @@
         <el-table-column label="电话号码" width="180" align="center">
           <template slot-scope="scope">{{scope.row.phone}}</template>
         </el-table-column>
-        <!--
-        <el-table-column label="用户余额" width="180" align="center">
-          <template slot-scope="scope">
-            <p> {{scope.row.blance}}</p>
-            <p>
-              <el-button
-                type="text"
-                @click="handleShowVeriyEditDialog(scope.$index, scope.row)">余额记录
-              </el-button>
-            </p>
-          </template>
-        </el-table-column>
-        -->
+
         <el-table-column label="是否显示" width="100" align="center">
           <template slot-scope="scope">
             <el-switch
@@ -75,6 +63,12 @@
 
         <el-table-column label="操作" width="200" align="center">
           <template slot-scope="scope">
+            <!--
+            <el-button
+                    size="mini"
+                    @click="handleUpdate(scope.$index, scope.row)">编辑
+            </el-button>
+            -->
             <el-button
               size="mini"
               type="danger"
@@ -99,35 +93,6 @@
         :total="total">
       </el-pagination>
     </div>
-    <el-dialog
-      title="余额记录"
-      :visible.sync="dialogVisible"
-      width="40%">
-      <el-table style="width: 100%;margin-top: 20px"
-                :data="blanceList"
-                border>
-
-        <el-table-column label="用户红包编号" align="center">
-          <template slot-scope="scope">{{scope.row.id}}</template>
-        </el-table-column>
-
-        <el-table-column label="发红包用户的编号" align="center">
-          <template slot-scope="scope">{{scope.row.adminId}}</template>
-        </el-table-column>
-        <el-table-column label="抢红包用户的编号" align="center">
-          <template slot-scope="scope">{{scope.row.userId}}</template>
-        </el-table-column>
-        <el-table-column label="抢到的红包金额" align="center">
-          <template slot-scope="scope">{{scope.row.amount}}</template>
-        </el-table-column>
-        <el-table-column label="抢红包时间" align="center">
-          <template slot-scope="scope">{{scope.row.grabTime|formatTime}}</template>
-        </el-table-column>
-        <el-table-column label="备注" align="center">
-          <template slot-scope="scope">{{scope.row.note}}</template>
-        </el-table-column>
-      </el-table>
-    </el-dialog>
   </div>
 </template>
 <script>
@@ -173,13 +138,6 @@
         let date = new Date(time);
         return formatDate(date, 'yyyy-MM-dd hh:mm:ss')
       },
-      verifyStatusFilter(value) {
-        if (value === 1) {
-          return '消费';
-        } else {
-          return '收入';
-        }
-      },
       formatStatus(status){
         for(let i=0;i<defaultStatusOptions.length;i++){
           if(status===defaultStatusOptions[i].value){
@@ -192,13 +150,6 @@
       }
     },
     methods: {
-      handleShowVeriyEditDialog(index,row){
-        this.dialogVisible=true;
-        fetchBlanceList(row.id).then(response=>{
-          this.blanceList=response.data;
-       });
-      },
-
       handleShowChange(index, row) {
         let params = new URLSearchParams();
         params.append('ids', row.id);
@@ -215,7 +166,7 @@
         this.listLoading = true;
         fetchList(this.listQuery).then(response => {
           this.listLoading = false;
-          this.list = response.data.list;
+          this.list = response.data.records;
           this.total = response.data.total;
           this.totalPage = response.data.pages;
           this.pageSize = response.data.size;

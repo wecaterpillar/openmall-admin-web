@@ -15,7 +15,7 @@
             <div style="margin-top: 15px">
                 <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
                     <el-form-item label="输入搜索：">
-                        <el-input style="width: 203px" v-model="listQuery.keyword" placeholder="品牌名称/关键字"></el-input>
+                        <el-input style="width: 203px" v-model="listQuery.keyword" placeholder="名称/关键字"></el-input>
                     </el-form-item>
                 </el-form>
             </div>
@@ -128,11 +128,11 @@
             return {
                 operates: [
                     {
-                        label: "显示品牌",
+                        label: "显示",
                         value: "showMemberLevel"
                     },
                     {
-                        label: "隐藏品牌",
+                        label: "隐藏",
                         value: "hideMemberLevel"
                     }
                 ],
@@ -174,10 +174,10 @@
                 this.listLoading = true;
                 fetchList(this.listQuery).then(response => {
                     this.listLoading = false;
-                this.list = response.data
-                //this.total = response.data.length;
-                //this.totalPage = response.data.pages;
-                //this.pageSize = response.data.size;
+                this.list = response.data.records;
+                this.total = response.data.length;
+                this.totalPage = response.data.pages;
+                this.pageSize = response.data.size;
             });
             },
             handleSelectionChange(val) {
@@ -187,7 +187,7 @@
                 this.$router.push({path: '/ums/updateMemberLevel', query: {id: row.id}})
             },
             handleDelete(index, row) {
-                this.$confirm('是否要删除该品牌', '提示', {
+                this.$confirm('是否要删除该级别', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'
