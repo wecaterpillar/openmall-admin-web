@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 export function fetchList() {
   return request({
-    url:'/cms/prefrenceArea/listAll',
+    url:'/cms/prefrenceArea/list',
     method:'get',
   })
 }
