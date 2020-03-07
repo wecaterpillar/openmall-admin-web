@@ -5,7 +5,6 @@
       <el-form-item label="所属分类：" prop="categoryId">
         <el-select
           v-model="topic.categoryId"
-          @change="handlecateChange"
           placeholder="请选择分类">
           <el-option
             v-for="item in cateOptions"
@@ -65,9 +64,10 @@
 </template>
 <script>
   import {createTopic, getTopic, updateTopic} from '@/api/cms/topic'
-  import SingleUpload from '@/components/Upload/singleUpload'
   import {fetchList, deleteSubjectCategory} from '@/api/cms/topicCategory'
+  import SingleUpload from '@/components/Upload/singleUpload'
   import Tinymce from '@/components/Tinymce'
+
   const defaultTopic={
     name: ''
   };

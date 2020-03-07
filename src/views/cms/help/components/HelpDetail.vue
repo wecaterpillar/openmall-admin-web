@@ -5,7 +5,6 @@
       <el-form-item label="类别：" prop="categoryId">
         <el-select
           v-model="help.categoryId"
-          @change="handlecateChange"
           placeholder="请选择分类">
           <el-option
             v-for="item in cateOptions"
@@ -50,8 +49,9 @@
   import {createHelp, getHelp, updateHelp} from '@/api/cms/help'
   import {fetchList, deleteSubjectCategory} from '@/api/cms/helpCategory'
   import SingleUpload from '@/components/Upload/singleUpload'
-  import Tinymce from '@/components/Tinymce'
   import MultiUpload from '@/components/Upload/multiUpload'
+  import Tinymce from '@/components/Tinymce'
+
   const defaultHelp={
     name: ''
   };
@@ -73,11 +73,8 @@
         activeHtmlName: 'pc',
         rules: {
           name: [
-            {required: true, message: '请输入品牌名称', trigger: 'blur'},
+            {required: true, message: '请输入名称', trigger: 'blur'},
             {min: 2, max: 140, message: '长度在 2 到 140 个字符', trigger: 'blur'}
-          ],
-          logo: [
-            {required: true, message: '请输入品牌logo', trigger: 'blur'}
           ],
           sort: [
             {type: 'number', message: '排序必须为数字'}

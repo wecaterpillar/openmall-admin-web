@@ -131,11 +131,11 @@
       return {
         operates: [
           {
-            label: "显示品牌",
+            label: "显示",
             value: "showHelp"
           },
           {
-            label: "隐藏品牌",
+            label: "隐藏",
             value: "hideHelp"
           }
         ],
@@ -202,7 +202,7 @@
         this.$router.push({path: '/cms/updateHelp', query: {id: row.id}})
       },
       handleDelete(index, row) {
-        this.$confirm('是否要删除该品牌', '提示', {
+        this.$confirm('是否要删除', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
           type: 'warning'
