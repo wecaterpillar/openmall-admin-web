@@ -185,7 +185,8 @@ export const asyncRouterMap = [
         path: 'FeightTemplate',
         name: 'FeightTemplate',
         component: () => import('@/views/pms/feightTemplate/index'),
-        meta: {title: '运费模版', icon: 'product-list'}
+        meta: {title: '运费模版', icon: 'product-list'},
+        hidden: true
       },
       {
         path: 'addFeightTemplate',
@@ -254,12 +255,14 @@ export const asyncRouterMap = [
         path: 'memberBlanceLog',
         name: 'memberBlanceLog',
         component: () => import('@/views/ums/memberBlanceLog/index'),
-        meta: {title: '积分余额日志记录', icon: 'product-list'}
+        meta: {title: '积分余额日志记录', icon: 'product-list'},
+        hidden: true
       }, {
         path: 'memberIntegration',
         name: 'memberIntegration',
         component: () => import('@/views/ums/memberIntegration/index'),
-        meta: {title: '成长值日志记录', icon: 'product-list'}
+        meta: {title: '成长值日志记录', icon: 'product-list'},
+        hidden: true
       },
       {
         path: 'appletSetting',
@@ -272,7 +275,8 @@ export const asyncRouterMap = [
         path: 'jifenSetting',
         name: 'jifenSetting',
         component: () => import('@/views/ums/jifensetting'),
-        meta: {title: '积分设置', icon: 'order-setting'}
+        meta: {title: '积分设置', icon: 'order-setting'},
+        hidden: true
       }
     ]
   },
@@ -453,7 +457,8 @@ export const asyncRouterMap = [
         path: 'dict',
         name: 'dict',
         component: () => import('@/views/sys/dict/index'),
-        meta: {title: '系统代码列表', icon: 'product-list'}
+        meta: {title: '系统代码列表', icon: 'product-list'},
+        hidden: true
       },
       {
         path: 'addDict',
@@ -473,12 +478,14 @@ export const asyncRouterMap = [
         path: 'webLog',
         name: 'webLog',
         component: () => import('@/views/sys/webLog/index'),
-        meta: {title: '前台日志列表', icon: 'product-list'}
+        meta: {title: '前台日志列表', icon: 'product-list'},
+        hidden: true
       }, {
         path: 'adminLog',
         name: 'adminLog',
         component: () => import('@/views/sys/adminLog/index'),
-        meta: {title: '后台日志列表', icon: 'product-list'}
+        meta: {title: '后台日志列表', icon: 'product-list'},
+        hidden: true
       }
     ]
   }, {
