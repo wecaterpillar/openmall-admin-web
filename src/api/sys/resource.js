@@ -26,14 +26,14 @@ export function updateResource(id, data) {
 
 export function deleteResource(id) {
   return request({
-    url: '/resource/delete/' + id,
+    url: '/sys/resource/delete/' + id,
     method: 'post'
   })
 }
 
 export function fetchAllResourceList() {
   return request({
-    url: '/resource/listAll',
+    url: '/sys/resource/listAll',
     method: 'get'
   })
 }

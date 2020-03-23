@@ -121,7 +121,7 @@
         }
       },
       handleAddMenu() {
-        this.$router.push('/ums/addMenu');
+        this.$router.push('/sys/addMenu');
       },
       getList() {
         this.listLoading = true;
@@ -150,10 +150,10 @@
         });
       },
       handleShowNextLevel(index, row) {
-        this.$router.push({path: '/ums/menu', query: {parentId: row.id}})
+        this.$router.push({path: '/sys/menu', query: {parentId: row.id}})
       },
       handleUpdate(index, row) {
-        this.$router.push({path:'/ums/updateMenu',query:{id:row.id}});
+        this.$router.push({path:'/sys/updateMenu',query:{id:row.id}});
       },
       handleDelete(index, row) {
         this.$confirm('是否要删除该菜单', '提示', {
