@@ -1,7 +1,7 @@
 # mall-admin-web
 
  Admin web for Open Mall
- 
+
 该项目为前后端分离项目的前端部分，后端项目open mall.
 
 ## 项目介绍
