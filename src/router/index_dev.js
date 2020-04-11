@@ -263,6 +263,20 @@ export const asyncRouterMap = [
         component: () => import('@/views/ums/memberIntegration/index'),
         meta: {title: '成长值日志记录', icon: 'product-list'},
         hidden: true
+      },
+      {
+        path: 'appletSetting',
+        name: 'appletSetting',
+        component: () => import('@/views/ums/setting'),
+        meta: {title: '登录支付设置', icon: 'order-setting'},
+        hidden: true
+      },
+      {
+        path: 'jifenSetting',
+        name: 'jifenSetting',
+        component: () => import('@/views/ums/jifensetting'),
+        meta: {title: '积分设置', icon: 'order-setting'},
+        hidden: true
       }
     ]
   },
@@ -273,57 +287,11 @@ export const asyncRouterMap = [
     name: 'sms',
     meta: {title: '营销', icon: 'sms'},
     children: [
-
-      {
-        path: 'advertise',
-        name: 'homeAdvertise',
-        component: () => import('@/views/sms/advertise/index'),
-        meta: {title: '广告列表', icon: 'sms-ad'}
-      },
-      {
-        path: 'addAdvertise',
-        name: 'addHomeAdvertise',
-        component: () => import('@/views/sms/advertise/add'),
-        meta: {title: '添加广告'},
-        hidden:true
-      },
-      {
-        path: 'updateAdvertise',
-        name: 'updateHomeAdvertise',
-        component: () => import('@/views/sms/advertise/update'),
-        meta: {title: '编辑广告'},
-        hidden:true
-      },
-      {
-        path: 'subject',
-        name: 'homeSubject',
-        component: () => import('@/views/sms/subject/index'),
-        meta: {title: '专题推荐', icon: 'sms-subject'}
-      },
-      {
-        path: 'new',
-        name: 'homeNew',
-        component: () => import('@/views/sms/new/index'),
-        meta: {title: '新品推荐', icon: 'sms-new'}
-      },
-      {
-        path: 'hot',
-        name: 'homeHot',
-        component: () => import('@/views/sms/hot/index'),
-        meta: {title: '人气推荐', icon: 'sms-hot'}
-      },
-      {
-        path: 'brand',
-        name: 'homeBrand',
-        component: () => import('@/views/sms/brand/index'),
-        meta: {title: '品牌推荐', icon: 'product-brand'}
-      },
       {
         path: 'flash',
         name: 'flash',
         component: () => import('@/views/sms/flash/index'),
-        meta: {title: '秒杀活动列表', icon: 'sms-flash'},
-        hidden:true
+        meta: {title: '秒杀活动列表', icon: 'sms-flash'}
       },
       {
         path: 'flashSession',
@@ -350,8 +318,7 @@ export const asyncRouterMap = [
         path: 'coupon',
         name: 'coupon',
         component: () => import('@/views/sms/coupon/index'),
-        meta: {title: '优惠券列表', icon: 'sms-coupon'},
-        hidden:true
+        meta: {title: '优惠券列表', icon: 'sms-coupon'}
       },
       {
         path: 'addCoupon',
@@ -373,74 +340,51 @@ export const asyncRouterMap = [
         component: () => import('@/views/sms/coupon/history'),
         meta: {title: '优惠券领取详情'},
         hidden:true
-      }
-    ]
-  }, {
-    path: '/cms',
-    component: Layout,
-    redirect: '/cms/help',
-    name: 'cms',
-    meta: {title: '内容', icon: 'home'},
-    children: [
-      {
-        path: 'subjectCategory',
-        name: 'subjectCategory',
-        component: () => import('@/views/cms/subjectCategory/index'),
-        meta: {title: '专题分类列表', icon: 'product-list'}
-      }, {
-        path: 'addSubjectCategory',
-        name: 'addSubjectCategory',
-        component: () => import('@/views/cms/subjectCategory/add'),
-        meta: {title: '添加权限'},
-        hidden: true
       },
       {
-        path: 'updateSubjectCategory',
-        name: 'updateSubjectCategory',
-        component: () => import('@/views/cms/subjectCategory/update'),
-        meta: {title: '编辑权限'},
-        hidden: true
-      }
-      ,
+        path: 'brand',
+        name: 'homeBrand',
+        component: () => import('@/views/sms/brand/index'),
+        meta: {title: '品牌推荐', icon: 'product-brand'}
+      },
+      {
+        path: 'new',
+        name: 'homeNew',
+        component: () => import('@/views/sms/new/index'),
+        meta: {title: '新品推荐', icon: 'sms-new'}
+      },
+      {
+        path: 'hot',
+        name: 'homeHot',
+        component: () => import('@/views/sms/hot/index'),
+        meta: {title: '人气推荐', icon: 'sms-hot'}
+      },
       {
         path: 'subject',
-        name: 'subject',
-        component: () => import('@/views/cms/subject/index'),
-        meta: {title: '专题列表', icon: 'product-list'}
-      }, {
-        path: 'addSubject',
-        name: 'addSubject',
-        component: () => import('@/views/cms/subject/add'),
-        meta: {title: '添加专题'},
-        hidden: true
+        name: 'homeSubject',
+        component: () => import('@/views/sms/subject/index'),
+        meta: {title: '专题推荐', icon: 'sms-subject'}
       },
       {
-        path: 'updateSubject',
-        name: 'updateSubject',
-        component: () => import('@/views/cms/subject/update'),
-        meta: {title: '编辑专题'},
-        hidden: true
+        path: 'advertise',
+        name: 'homeAdvertise',
+        component: () => import('@/views/sms/advertise/index'),
+        meta: {title: '广告列表', icon: 'sms-ad'}
       },
       {
-        path: 'prefrenceArea',
-        name: 'prefrenceArea',
-        component: () => import('@/views/cms/prefrenceArea/index'),
-        meta: {title: '偏爱专区列表', icon: 'product-list'}
-      }, {
-        path: 'addPrefrenceArea',
-        name: 'addPrefrenceArea',
-        component: () => import('@/views/cms/prefrenceArea/add'),
-        meta: {title: '添加偏爱专区'},
-        hidden: true
+        path: 'addAdvertise',
+        name: 'addHomeAdvertise',
+        component: () => import('@/views/sms/advertise/add'),
+        meta: {title: '添加广告'},
+        hidden:true
       },
       {
-        path: 'updatePrefrenceArea',
-        name: 'updatePrefrenceArea',
-        component: () => import('@/views/cms/prefrenceArea/update'),
-        meta: {title: '编辑偏爱专区'},
-        hidden: true
+        path: 'updateAdvertise',
+        name: 'updateHomeAdvertise',
+        component: () => import('@/views/sms/advertise/update'),
+        meta: {title: '编辑广告'},
+        hidden:true
       }
-
     ]
   },
   {
@@ -544,6 +488,201 @@ export const asyncRouterMap = [
         hidden: true
       }
     ]
+  }, {
+    path: '/cms',
+    component: Layout,
+    redirect: '/cms/help',
+    name: 'cms',
+    meta: {title: '内容管理', icon: 'home'},
+    children: [
+      {
+        path: 'prefrenceArea',
+        name: 'prefrenceArea',
+        component: () => import('@/views/cms/prefrenceArea/index'),
+        meta: {title: '偏爱专区列表', icon: 'product-list'}
+      }, {
+        path: 'addPrefrenceArea',
+        name: 'addPrefrenceArea',
+        component: () => import('@/views/cms/prefrenceArea/add'),
+        meta: {title: '添加偏爱专区'},
+        hidden: true
+      },
+      {
+        path: 'updatePrefrenceArea',
+        name: 'updatePrefrenceArea',
+        component: () => import('@/views/cms/prefrenceArea/update'),
+        meta: {title: '编辑偏爱专区'},
+        hidden: true
+      }
+      ,
+      {
+        path: 'subjectCategory',
+        name: 'subjectCategory',
+        component: () => import('@/views/cms/subjectCategory/index'),
+        meta: {title: '专题分类列表', icon: 'product-list'}
+      }, {
+        path: 'addSubjectCategory',
+        name: 'addSubjectCategory',
+        component: () => import('@/views/cms/subjectCategory/add'),
+        meta: {title: '添加权限'},
+        hidden: true
+      },
+      {
+        path: 'updateSubjectCategory',
+        name: 'updateSubjectCategory',
+        component: () => import('@/views/cms/subjectCategory/update'),
+        meta: {title: '编辑权限'},
+        hidden: true
+      }
+      ,
+      {
+        path: 'subject',
+        name: 'subject',
+        component: () => import('@/views/cms/subject/index'),
+        meta: {title: '专题列表', icon: 'product-list'}
+      }, {
+        path: 'addSubject',
+        name: 'addSubject',
+        component: () => import('@/views/cms/subject/add'),
+        meta: {title: '添加专题'},
+        hidden: true
+      },
+      {
+        path: 'updateSubject',
+        name: 'updateSubject',
+        component: () => import('@/views/cms/subject/update'),
+        meta: {title: '编辑专题'},
+        hidden: true
+      }
+      ,
+      {
+        path: 'subjectComment',
+        name: 'subjectComment',
+        component: () => import('@/views/cms/subjectComment/index'),
+        meta: {title: '专题评论列表', icon: 'product-list'}
+      }, {
+        path: 'addSubjectComment',
+        name: 'addSubjectComment',
+        component: () => import('@/views/cms/subjectComment/add'),
+        meta: {title: '添加权限'},
+        hidden: true
+      },
+      {
+        path: 'updateSubjectComment',
+        name: 'updateSubjectComment',
+        component: () => import('@/views/cms/subjectComment/update'),
+        meta: {title: '编辑权限'},
+        hidden: true
+      }
+      ,
+      {
+        path: 'topicCategory',
+        name: 'topicCategory',
+        component: () => import('@/views/cms/topicCategory/index'),
+        meta: {title: '话题分类列表', icon: 'product-list'}
+      }, {
+        path: 'addTopicCategory',
+        name: 'addTopicCategory',
+        component: () => import('@/views/cms/topicCategory/add'),
+        meta: {title: '添加权限'},
+        hidden: true
+      },
+      {
+        path: 'updateTopicCategory',
+        name: 'updateTopicCategory',
+        component: () => import('@/views/cms/topicCategory/update'),
+        meta: {title: '编辑权限'},
+        hidden: true
+      }
+      ,
+      {
+        path: 'topic',
+        name: 'topic',
+        component: () => import('@/views/cms/topic/index'),
+        meta: {title: '话题列表', icon: 'product-list'}
+      }, {
+        path: 'addTopic',
+        name: 'addTopic',
+        component: () => import('@/views/cms/topic/add'),
+        meta: {title: '添加权限'},
+        hidden: true
+      },
+      {
+        path: 'updateTopic',
+        name: 'updateTopic',
+        component: () => import('@/views/cms/topic/update'),
+        meta: {title: '编辑权限'},
+        hidden: true
+      }
+      ,
+      {
+        path: 'topicComment',
+        name: 'topicComment',
+        component: () => import('@/views/cms/topicComment/index'),
+        meta: {title: '话题评论列表', icon: 'product-list'}
+      }
+      ,
+      {
+        path: 'memberReport',
+        name: 'memberReport',
+        component: () => import('@/views/cms/memberReport/index'),
+        meta: {title: '用户报告列表', icon: 'product-list'}
+      }, {
+        path: 'addMemberReport',
+        name: 'addMemberReport',
+        component: () => import('@/views/cms/memberReport/add'),
+        meta: {title: '添加权限'},
+        hidden: true
+      },
+      {
+        path: 'updateMemberReport',
+        name: 'updateMemberReport',
+        component: () => import('@/views/cms/memberReport/update'),
+        meta: {title: '编辑权限'},
+        hidden: true
+      }
+      ,
+      {
+        path: 'helpCategory',
+        name: 'helpCategory',
+        component: () => import('@/views/cms/helpCategory/index'),
+        meta: {title: '帮助分类列表', icon: 'product-list'}
+      }, {
+        path: 'addHelpCategory',
+        name: 'addHelpCategory',
+        component: () => import('@/views/cms/helpCategory/add'),
+        meta: {title: '添加帮助分类'},
+        hidden: true
+      },
+      {
+        path: 'updateHelpCategory',
+        name: 'updateHelpCategory',
+        component: () => import('@/views/cms/helpCategory/update'),
+        meta: {title: '编辑帮助分类'},
+        hidden: true
+      }
+      ,
+      {
+        path: 'help',
+        name: 'help',
+        component: () => import('@/views/cms/help/index'),
+        meta: {title: '帮助列表', icon: 'product-list'}
+      }, {
+        path: 'addHelp',
+        name: 'addHelp',
+        component: () => import('@/views/cms/help/add'),
+        meta: {title: '添加帮助'},
+        hidden: true
+      },
+      {
+        path: 'updateHelp',
+        name: 'updateHelp',
+        component: () => import('@/views/cms/help/update'),
+        meta: {title: '编辑帮助'},
+        hidden: true
+      }
+
+    ]
   },
   {path: '*', redirect: '/404', hidden: true}
 ]
@@ -553,4 +692,3 @@ export default new Router({
   scrollBehavior: () => ({y: 0}),
   routes: constantRouterMap
 })
-
