@@ -323,7 +323,7 @@ export const asyncRouterMap = [
         name: 'flash',
         component: () => import('@/views/sms/flash/index'),
         meta: {title: '秒杀活动列表', icon: 'sms-flash'},
-        hidden:true
+        hidden:false
       },
       {
         path: 'flashSession',
@@ -351,7 +351,7 @@ export const asyncRouterMap = [
         name: 'coupon',
         component: () => import('@/views/sms/coupon/index'),
         meta: {title: '优惠券列表', icon: 'sms-coupon'},
-        hidden:true
+        hidden:false
       },
       {
         path: 'addCoupon',
@@ -425,19 +425,19 @@ export const asyncRouterMap = [
         path: 'prefrenceArea',
         name: 'prefrenceArea',
         component: () => import('@/views/cms/prefrenceArea/index'),
-        meta: {title: '偏爱专区列表', icon: 'product-list'}
+        meta: {title: '优选专区列表', icon: 'product-list'}
       }, {
         path: 'addPrefrenceArea',
         name: 'addPrefrenceArea',
         component: () => import('@/views/cms/prefrenceArea/add'),
-        meta: {title: '添加偏爱专区'},
+        meta: {title: '添加优选专区'},
         hidden: true
       },
       {
         path: 'updatePrefrenceArea',
         name: 'updatePrefrenceArea',
         component: () => import('@/views/cms/prefrenceArea/update'),
-        meta: {title: '编辑偏爱专区'},
+        meta: {title: '编辑优选专区'},
         hidden: true
       }
 

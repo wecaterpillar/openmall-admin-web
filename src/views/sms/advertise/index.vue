@@ -158,8 +158,36 @@
       value: 1
     },
     {
-      label: '其他',
-      value: 9
+      label: '广告位11',
+      value: 11
+    },
+    {
+      label: '广告位12',
+      value: 12
+    },
+    {
+      label: '广告位13',
+      value: 13
+    },
+    {
+      label: '广告位14',
+      value: 14
+    },
+    {
+      label: '广告位15',
+      value: 15
+    },
+    {
+      label: '广告位16',
+      value: 16
+    },
+    {
+      label: '广告位17',
+      value: 17
+    },
+    {
+      label: '广告位18',
+      value: 18
     }
   ];
   export default {
@@ -188,8 +216,10 @@
       formatType(type){
         if(type===1){
           return 'APP首页轮播';
-        }else{
+        }else if(type===2){
           return 'PC首页轮播';
+        }else{
+          return '其他';
         }
       },
       formatTime(time){
