@@ -15,7 +15,7 @@
             <div style="margin-top: 15px">
                 <el-form :inline="true" :model="listQuery" size="small" label-width="140px">
                     <el-form-item label="输入搜索：">
-                        <el-input style="width: 203px" v-model="listQuery.keyword" placeholder="品牌名称/关键字"></el-input>
+                        <el-input style="width: 203px" v-model="listQuery.keyword" placeholder="名称/关键字"></el-input>
                     </el-form-item>
                 </el-form>
             </div>
@@ -48,7 +48,7 @@
                 <el-table-column label="分类图标" align="center">
                   <template slot-scope="scope"><img style="height: 80px" :src="scope.row.icon"></template>
                 </el-table-column>
-                <el-table-column label="专题数量" align="center">
+                <el-table-column label="数量" align="center">
                     <template slot-scope="scope">{{scope.row.subjectCount}}</template>
                 </el-table-column>
                 <el-table-column label="状态" align="center">

@@ -158,11 +158,11 @@
               },
                 operates: [
                     {
-                        label: "显示品牌",
+                        label: "显示",
                         value: "showTopic"
                     },
                     {
-                        label: "隐藏品牌",
+                        label: "隐藏",
                         value: "hideTopic"
                     }
                 ],
@@ -249,7 +249,7 @@
                 this.$router.push({path: '/cms/updateTopic', query: {id: row.id}})
             },
             handleDelete(index, row) {
-                this.$confirm('是否要删除该品牌', '提示', {
+                this.$confirm('是否要删除该话题', '提示', {
                     confirmButtonText: '确定',
                     cancelButtonText: '取消',
                     type: 'warning'

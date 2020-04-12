@@ -49,7 +49,6 @@
   import {createHelp, getHelp, updateHelp} from '@/api/cms/help'
   import {fetchList, deleteSubjectCategory} from '@/api/cms/helpCategory'
   import SingleUpload from '@/components/Upload/singleUpload'
-  import MultiUpload from '@/components/Upload/multiUpload'
   import Tinymce from '@/components/Tinymce'
 
   const defaultHelp={
@@ -57,7 +56,7 @@
   };
   export default {
     name: 'HelpDetail',
-    components:{SingleUpload},
+    components:{SingleUpload,Tinymce},
     props: {
       isEdit: {
         type: Boolean,

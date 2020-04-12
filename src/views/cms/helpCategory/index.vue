@@ -48,7 +48,7 @@
                 <el-table-column label="分类图标" align="center">
                   <template slot-scope="scope"><img style="height: 80px" :src="scope.row.icon"></template>
                 </el-table-column>
-                <el-table-column label="专题数量" align="center">
+                <el-table-column label="数量" align="center">
                     <template slot-scope="scope">{{scope.row.helpCount}}</template>
                 </el-table-column>
                 <el-table-column label="状态" align="center">

@@ -439,6 +439,92 @@ export const asyncRouterMap = [
         component: () => import('@/views/cms/prefrenceArea/update'),
         meta: {title: '编辑优选专区'},
         hidden: true
+      },
+      {
+        path: 'topicCategory',
+        name: 'topicCategory',
+        component: () => import('@/views/cms/topicCategory/index'),
+        meta: {title: '话题分类列表', icon: 'product-list'}
+      }, {
+        path: 'addTopicCategory',
+        name: 'addTopicCategory',
+        component: () => import('@/views/cms/topicCategory/add'),
+        meta: {title: '添加权限'},
+        hidden: true
+      },
+      {
+        path: 'updateTopicCategory',
+        name: 'updateTopicCategory',
+        component: () => import('@/views/cms/topicCategory/update'),
+        meta: {title: '编辑权限'},
+        hidden: true
+      }
+      ,
+      {
+        path: 'topic',
+        name: 'topic',
+        component: () => import('@/views/cms/topic/index'),
+        meta: {title: '话题列表', icon: 'product-list'}
+      }, {
+        path: 'addTopic',
+        name: 'addTopic',
+        component: () => import('@/views/cms/topic/add'),
+        meta: {title: '添加权限'},
+        hidden: true
+      },
+      {
+        path: 'updateTopic',
+        name: 'updateTopic',
+        component: () => import('@/views/cms/topic/update'),
+        meta: {title: '编辑权限'},
+        hidden: true
+      }
+      ,
+      {
+        path: 'topicComment',
+        name: 'topicComment',
+        component: () => import('@/views/cms/topicComment/index'),
+        meta: {title: '话题评论列表', icon: 'product-list'},
+        hidden: true
+      } ,
+      {
+        path: 'helpCategory',
+        name: 'helpCategory',
+        component: () => import('@/views/cms/helpCategory/index'),
+        meta: {title: '帮助分类列表', icon: 'product-list'}
+      }, {
+        path: 'addHelpCategory',
+        name: 'addHelpCategory',
+        component: () => import('@/views/cms/helpCategory/add'),
+        meta: {title: '添加帮助分类'},
+        hidden: true
+      },
+      {
+        path: 'updateHelpCategory',
+        name: 'updateHelpCategory',
+        component: () => import('@/views/cms/helpCategory/update'),
+        meta: {title: '编辑帮助分类'},
+        hidden: true
+      }
+      ,
+      {
+        path: 'help',
+        name: 'help',
+        component: () => import('@/views/cms/help/index'),
+        meta: {title: '帮助列表', icon: 'product-list'}
+      }, {
+        path: 'addHelp',
+        name: 'addHelp',
+        component: () => import('@/views/cms/help/add'),
+        meta: {title: '添加帮助'},
+        hidden: true
+      },
+      {
+        path: 'updateHelp',
+        name: 'updateHelp',
+        component: () => import('@/views/cms/help/update'),
+        meta: {title: '编辑帮助'},
+        hidden: true
       }
 
     ]
