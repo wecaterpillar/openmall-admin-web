@@ -13,9 +13,9 @@ export function createMember(data) {
     data:data
   })
 }
-export function updateShowStatus(data) {
+export function updateUseStatus(data) {
   return request({
-    url:'/ums/member/update/showStatus',
+    url:'/ums/member/updateStatus',
     method:'post',
     data:data
   })
@@ -45,11 +45,19 @@ export function getMember(id) {
 
 export function updateMember(id,data) {
   return request({
-    url:'/ums/member/update/'+id,
+    url:'/ums/member/update',
     method:'post',
     data:data
   })
 }
+
+export function detailMember(id) {
+  return request({
+    url:'/ums/member/getMemberDetail/'+id,
+    method:'get',
+  })
+}
+
 
 export function fetchBlanceList(id) {
   return request({

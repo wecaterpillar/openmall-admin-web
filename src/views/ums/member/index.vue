@@ -37,23 +37,32 @@
         <el-table-column label="编号" width="180" align="center">
           <template slot-scope="scope">{{scope.row.id}}</template>
         </el-table-column>
-        <el-table-column label="注册时间" width="180" align="center">
-          <template slot-scope="scope">{{scope.row.createTime | formatTime}}</template>
+        <el-table-column label="用户账号" width="180" align="center">
+          <template slot-scope="scope">{{scope.row.username}}</template>
         </el-table-column>
         <el-table-column label="用户昵称" align="center">
           <template slot-scope="scope">{{scope.row.nickname}}</template>
         </el-table-column>
-        <el-table-column label="用户账号" width="180" align="center">
-          <template slot-scope="scope">{{scope.row.username}}</template>
-        </el-table-column>
-        <el-table-column label="电话号码" width="180" align="center">
+        <el-table-column label="电话号码" align="center">
           <template slot-scope="scope">{{scope.row.phone}}</template>
         </el-table-column>
+        <!--<el-table-column label="生日" " align="center">
+          <template slot-scope="scope">{{scope.row.birthday }}</template>
+        </el-table-column>-->
+        <el-table-column label="城市"  align="center">
+          <template slot-scope="scope">{{scope.row.city}}</template>
+        </el-table-column>
+        <el-table-column label="积分"  align="center">
+          <template slot-scope="scope">{{scope.row.integration}}</template>
+        </el-table-column>
 
-        <el-table-column label="是否显示" width="100" align="center">
-          <template slot-scope="scope">
+        <el-table-column label="注册时间"  align="center">
+          <template slot-scope="scope">{{scope.row.createTime | formatTime}}</template>
+        </el-table-column>
+        <el-table-column label="帐号启用状态" width="100" align="center">
+          <<template slot-scope="scope">
             <el-switch
-              @change="handleShowChange(scope.$index, scope.row)"
+              @change="updateUseStatus(scope.$index, scope.row)"
               :active-value="1"
               :inactive-value="0"
               v-model="scope.row.status">
@@ -61,19 +70,34 @@
           </template>
         </el-table-column>
 
+
+<!--
+        <el-table-column label="是否显示" width="100" align="center">
+          <template slot-scope="scope">
+            <el-switch
+              @change="handleUseStatus(scope.$index, scope.row)"
+              :active-value="1"
+              :inactive-value="0"
+              v-model="scope.row.status">
+            </el-switch>
+          </template>
+        </el-table-column>-->
+
         <el-table-column label="操作" width="200" align="center">
           <template slot-scope="scope">
-            <!--
             <el-button
-                    size="mini"
-                    @click="handleUpdate(scope.$index, scope.row)">编辑
+              size="mini"
+              @click="handleShowMember(scope.$index, scope.row)">查看
             </el-button>
-            -->
             <el-button
+              size="mini"
+              @click="handleUpdate(scope.$index, scope.row)">编辑
+            </el-button>
+            <!--<el-button
               size="mini"
               type="danger"
               @click="handleDelete(scope.$index, scope.row)">删除
-            </el-button>
+            </el-button>-->
           </template>
         </el-table-column>
       </el-table>
@@ -93,16 +117,78 @@
         :total="total">
       </el-pagination>
     </div>
+    <el-dialog
+      title="用户信息"
+      :visible.sync="memberInfo.dialogVisible"
+      width="40%">
+      <el-form  label-width="150px">
+        <el-form-item label="用户名：" prop="name">
+          <span>{{memberInfo.username}}</span>
+        </el-form-item>
+
+        <el-form-item label="昵称：">
+          <span>{{memberInfo.nickname}}</span>
+        </el-form-item>
+
+        <el-form-item label="性别:" >
+          <el-radio-group v-model="memberInfo.gender" >
+            <el-radio :label="0">未知</el-radio>
+            <el-radio :label="1">男</el-radio>
+            <el-radio :label="2">女</el-radio>
+          </el-radio-group>
+
+        </el-form-item>
+
+        <el-form-item label="手机号码：" >
+          <span>{{memberInfo.phone}}</span>
+        </el-form-item>
+
+        <el-form-item label="帐号启用状态：" >
+          <el-switch
+            :active-value="1"
+            :inactive-value="0"
+            v-model="memberInfo.status" >
+          </el-switch>
+        </el-form-item>
+
+        <el-form-item label="注册时间：" >
+          <span>{{memberInfo.createTime| formatTime}}</span>
+        </el-form-item>
+
+        <el-form-item label="城市：" >
+          <span>{{memberInfo.city}}</span>
+        </el-form-item>
+
+        <el-form-item label="积分：" >
+          <span>{{memberInfo.integration}}</span>
+        </el-form-item>
+
+        <span slot="footer" class="dialog-footer">
+          <el-button @click="memberInfo.dialogVisible = false">取 消</el-button>
+        </span>
+      </el-form>
+    </el-dialog>
   </div>
 </template>
 <script>
   import {formatDate} from '@/utils/date';
-  import {fetchList, updateShowStatus, updateFactoryStatus, deleteMember,fetchBlanceList} from '@/api/ums/member'
+  import {fetchList, updateUseStatus , updateFactoryStatus, deleteMember,fetchBlanceList} from '@/api/ums/member'
 
   export default {
     name: 'memberList',
     data() {
       return {
+        memberInfo:{
+            dialogVisible:false,
+            username:'',
+            nickname:'',
+            gender:'0',
+            phone:'',
+            status:'',
+            createTime:'',
+            city:'',
+            integration:''
+        },
         dialogVisible:false,
         blanceList:null,
         operates: [
@@ -150,19 +236,7 @@
       }
     },
     methods: {
-      handleShowChange(index, row) {
-        let params = new URLSearchParams();
-        params.append('ids', row.id);
-        params.append('showStatus', row.showStatus);
-        updateShowStatus(params).then(response => {
-          this.$message({
-          message: '修改成功',
-          type: 'success',
-          duration: 1000
-        });
-      });
-      },
-      getList() {
+     getList() {
         this.listLoading = true;
         fetchList(this.listQuery).then(response => {
           this.listLoading = false;
@@ -177,6 +251,20 @@
       },
       handleUpdate(index, row) {
         this.$router.push({path: '/ums/updateMember', query: {id: row.id}})
+      },
+      handleShowMember(index, row) {
+          this.memberInfo.dialogVisible=true;
+          this.memberInfo.username=row.username;
+          this.memberInfo.nickname=row.nickname;
+          this.memberInfo.gender=row.gender;
+          this.memberInfo.phone=row.phone;
+          this.memberInfo.status=row.status;
+          this.memberInfo.createTime=row.createTime;
+          this.memberInfo.city=row.city;
+          this.memberInfo.integration=row.integration;
+      },
+      handleDetail(index, row) {
+        this.$router.push({path: '/ums/detailMember', query: {id: row.id}})
       },
       handleDelete(index, row) {
         this.$confirm('是否要删除该记录', '提示', {
@@ -194,6 +282,7 @@
           });
         });
       },
+
       getProductList(index, row) {
         console.log(index, row);
       },
@@ -217,13 +306,12 @@
             row.factoryStatus = 0;
           }
         });
-      },
-      handleShowStatusChange(index, row) {
+      }, updateUseStatus(index, row) {
         let data = new URLSearchParams();
         ;
-        data.append("ids", row.id);
-        data.append("showStatus", row.showStatus);
-        updateShowStatus(data).then(response => {
+        data.append("id", row.id);
+        data.append("status", row.status);
+        updateUseStatus(data).then(response => {
           this.$message({
             message: '修改成功',
             type: 'success',
@@ -280,7 +368,7 @@
         let data = new URLSearchParams();
         data.append("ids", ids);
         data.append("showStatus", showStatus);
-        updateShowStatus(data).then(response => {
+        updateUseStatus(data).then(response => {
           this.getList();
           this.$message({
             message: '修改成功',

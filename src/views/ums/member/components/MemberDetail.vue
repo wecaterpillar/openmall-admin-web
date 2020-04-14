@@ -1,63 +1,71 @@
 <template> 
   <el-card class="form-container" shadow="never">
-    <el-form :model="brand" :rules="rules" ref="brandFrom" label-width="150px">
-      <el-form-item label="品牌名称：" prop="name">
-        <el-input v-model="brand.name"></el-input>
+
+    <el-form :model="member" :rules="rules" ref="memberFrom" label-width="150px">
+
+      <el-form-item label="id：" prop="id" >
+        <el-input v-model="member.id" readonly="true" ></el-input>
       </el-form-item>
-      <el-form-item label="品牌首字母：">
-        <el-input v-model="brand.firstLetter"></el-input>
+
+      <el-form-item label="用户名：" prop="name">
+        <el-input v-model="member.username" ></el-input>
       </el-form-item>
-      <el-form-item label="品牌LOGO：" prop="logo">
-        <single-upload v-model="brand.logo"></single-upload>
+
+      <el-form-item label="昵称：">
+        <el-input v-model="member.nickname"  ></el-input>
       </el-form-item>
-      <el-form-item label="品牌专区大图：">
-        <single-upload v-model="brand.bigPic"></single-upload>
-      </el-form-item>
-      <el-form-item label="品牌故事：">
-        <el-input
-          placeholder="请输入内容"
-          type="textarea"
-          v-model="brand.brandStory"
-          :autosize="true"></el-input>
-      </el-form-item>
-      <el-form-item label="排序：" prop="sort">
-        <el-input v-model.number="brand.sort"></el-input>
-      </el-form-item>
-      <el-form-item label="是否显示：">
-        <el-radio-group v-model="brand.showStatus">
-          <el-radio :label="1">是</el-radio>
-          <el-radio :label="0">否</el-radio>
+
+      <el-form-item label="性别" label-width="">
+        <el-radio-group v-model="member.gender"  >
+          <el-radio :label="0">未知</el-radio>
+          <el-radio :label="1">男</el-radio>
+          <el-radio :label="2">女</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="品牌制造商：">
-        <el-radio-group v-model="brand.factoryStatus">
-          <el-radio :label="1">是</el-radio>
-          <el-radio :label="0">否</el-radio>
-        </el-radio-group>
+
+      <el-form-item label="手机号码：" >
+        <el-input v-model="member.phone"  ></el-input>
       </el-form-item>
+
+      <el-form-item label="帐号启用状态：" >
+        <el-switch
+          :active-value="1"
+          :inactive-value="0"
+          v-model="member.status" >
+        </el-switch>
+      </el-form-item>
+
+      <el-form-item label="注册时间：" >
+        <el-date-picker type="datetime" readonly="true"  v-model="member.createTime" placeholder="选择结束时间" value-format="yyyy-MM-dd HH:mm:ss"    style="width: 100%;"></el-date-picker>
+      </el-form-item>
+
+      <el-form-item label="城市：" >
+        <el-input v-model="member.city" ></el-input>
+      </el-form-item>
+
+      <el-form-item label="积分：" >
+        <el-input v-model="member.integration"></el-input>
+      </el-form-item>
+
       <el-form-item>
-        <el-button type="primary" @click="onSubmit('brandFrom')">提交</el-button>
-        <el-button v-if="!isEdit" @click="resetForm('brandFrom')">重置</el-button>
+        <el-button type="success" class="btn-success" @click="$router.back(-1)">返回</el-button>
+        <el-button v-if="isEdit" type="primary" @click="onSubmit('memberFrom')">提交</el-button>
+<!--        <el-button v-if="isEdit" @click="resetForm('memberFrom')">重置</el-button>-->
       </el-form-item>
+
     </el-form>
+
   </el-card>
+
 </template>
+
 <script>
-  import {createBrand, getBrand, updateBrand} from '@/api/pms/brand'
-  import SingleUpload from '@/components/Upload/singleUpload'
-  const defaultBrand={
-    bigPic: '',
-    brandStory: '',
-    factoryStatus: 0,
-    firstLetter: '',
-    logo: '',
-    name: '',
-    showStatus: 0,
-    sort: 0
+  import {createMember, getMember, updateMember} from '@/api/ums/member'
+  const defaultMember={
+      name: ''
   };
   export default {
-    name: 'BrandDetail',
-    components:{SingleUpload},
+    name: 'MemberDetail',
     props: {
       isEdit: {
         type: Boolean,
@@ -66,8 +74,8 @@
     },
     data() {
       return {
-        brand:Object.assign({}, defaultBrand),
-        rules: {
+        member:Object.assign({}, defaultMember),
+        /*rules: {
           name: [
             {required: true, message: '请输入品牌名称', trigger: 'blur'},
             {min: 2, max: 140, message: '长度在 2 到 140 个字符', trigger: 'blur'}
@@ -78,16 +86,16 @@
           sort: [
             {type: 'number', message: '排序必须为数字'}
           ],
-        }
+        }*/
       }
     },
     created() {
       if (this.isEdit) {
-        getBrand(this.$route.query.id).then(response => {
-          this.brand = response.data;
+        getMember(this.$route.query.id).then(response => {
+          this.member = response.data;
         });
       }else{
-        this.brand = Object.assign({},defaultBrand);
+        this.member = Object.assign({},defaultMember);
       }
     },
     methods: {
@@ -100,7 +108,7 @@
               type: 'warning'
             }).then(() => {
               if (this.isEdit) {
-                updateBrand(this.$route.query.id, this.brand).then(response => {
+                updateMember(this.$route.query.id, this.member).then(response => {
                   this.$refs[formName].resetFields();
                   this.$message({
                     message: '修改成功',
@@ -110,9 +118,9 @@
                   this.$router.back();
                 });
               } else {
-                createBrand(this.brand).then(response => {
+                createMember(this.member).then(response => {
                   this.$refs[formName].resetFields();
-                  this.brand = Object.assign({},defaultBrand);
+                  this.member = Object.assign({},defaultMember);
                   this.$message({
                     message: '提交成功',
                     type: 'success',
@@ -134,7 +142,7 @@
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();
-        this.brand = Object.assign({},defaultBrand);
+        this.member = Object.assign({},defaultMember);
       }
     }
   }
